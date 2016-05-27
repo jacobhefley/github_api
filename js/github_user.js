@@ -1,11 +1,11 @@
 var apiKey = require('./../.env').apiKey;
+var Repo = require('./../js/repo_class.js').Repo;
 
 exports.User = function(){
 };
 
 exports.User.prototype.getRepos = function(inputed_user, displayFunction){
-	var name_array = [];
-	var description_array = [];
+	var repo_array = [];
 	var temp = 1;
 	var i = 0;
 	var page_counter = 100;
@@ -14,14 +14,26 @@ exports.User.prototype.getRepos = function(inputed_user, displayFunction){
     for(i = 0; i < response.length; i++){
 
     	temp = response[i];
-    	console.log(temp.name);
-    	name_array.push(temp.name);
-    	description_array.push(temp.description);
+      var tempRepo = new Repo(temp.name, temp.description, temp.html_url, temp.created_at);
+    	repo_array.push(tempRepo);
+      // delete to do manual garbage collection
+      delete tempRepo;
     }
-    console.log(response);
-    displayFunction(name_array, description_array);
+    console.log(repo_array);
+    displayFunction(repo_array);
   
   }).fail(function(error){
     console.log(error.responseJSON.message);
   });
 };
+
+// // html_url
+//     console.log(response);
+//     for(i = 0; i < response.length; i++){
+//       temp = response[i];
+//       var tempRepo = new Repo(temp.name, temp.description, temp.html_url, temp.created_at);
+//       // tempRepo.log();
+//       displayFunction(tempRepo);
+//       // delete to do manual garbage collection, save memory !
+//       delete tempRepo;      
+//     }
