@@ -11,18 +11,27 @@ exports.User = function(){
 //   });
 // }
 
-exports.User.prototype.getRepos = function(inputed_user){
-  $.get('https://api.github.com/users/'+inputed_user+'?access_token=' + apiKey).then(function(response){
-    console.log(response);
-    var obj = JSON.stringify(response);
-    console.log(obj);
-  });
+exports.User.prototype.getRepos = function(inputed_user, displayFunction){
+	var temp_array = [];
   $.get('https://api.github.com/users/'+inputed_user+'/repos?access_token=' + apiKey).then(function(response){
+    for( var i = 0; i < 30; i++){
+
+    	var temp = response[i];
+    	console.log(temp.name);
+    	var temp2 = temp.name;
+    	temp_array.push(temp2);
+    	displayFunction(temp2); 
+    }
     console.log(response);
-    var obj = JSON.stringify(response);
-    console.log(obj);
   })
   .fail(function(error){
     console.log(error.responseJSON.message);
   });
 };
+
+
+  // $.get('https://api.github.com/users/'+inputed_user+'?access_token=' + apiKey).then(function(response){
+  //   console.log(response);
+  //   var obj = JSON.stringify(response);
+  //   console.log(obj);
+  // });

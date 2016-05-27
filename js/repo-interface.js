@@ -1,9 +1,32 @@
 var User = require('./../js/github_user.js').User;
 
-// var displayHumidity = function(humidityData, city) {
-//   $('.showWeather').text("The humidity in " + city + " is " + humidityData + "%");
+var GitHubUser = require('./../js/github_user_class.js').GitHubUser;
+
+ function display(repos){
+    for( var i = 0; i < repos.length; i++){
+    	var para = document.createElement("p");
+			var node = document.createTextNode(repos[i]);
+			para.appendChild(node);
+
+			var element = document.getElementById("div1");
+			element.appendChild(para);
+    }
+}
+// var mytext=document.createTextNode(what)
+// document.getElementById("mydiv").appendChild(mytext)
+
+
+//     var node = document.createElement("LI");
+
+//     var textnode = document.createTextNode("Water");
+
+//     document.getElementById("list").appendChild(i);
 // }
 
+// }
+var display = function(repo) {
+  $("ol").append("<li>"+repo+"</li>");
+}
 // $(document).ready(function() {
 //   var currentWeatherObject = new Weather();
 //   $('#weatherLocation').click(function() {
@@ -18,6 +41,6 @@ $(document).ready(function() {
 	var currentUser = new User();
 	$('#search').click(function() {
 		var inputed_user = $('#inputed_user').val();
-		currentUser.getRepos(inputed_user);
+		currentUser.getRepos(inputed_user, display);
   });
 });
