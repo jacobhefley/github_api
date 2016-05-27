@@ -1,4 +1,4 @@
-var getRepos = require('./../js/github_user.js').User;
+var User = require('./../js/github_user.js').User;
 
 // var displayHumidity = function(humidityData, city) {
 //   $('.showWeather').text("The humidity in " + city + " is " + humidityData + "%");
@@ -16,7 +16,8 @@ var getRepos = require('./../js/github_user.js').User;
 
 $(document).ready(function() {
 	var currentUser = new User();
-	$('#serach').click(function() {
-		currentUser.getRepos();
+	$('#search').click(function() {
+		var inputed_user = $('#inputed_user').val();
+		currentUser.getRepos(inputed_user);
   });
 });
