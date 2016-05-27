@@ -3,14 +3,6 @@ var apiKey = require('./../.env').apiKey;
 exports.User = function(){
 };
 
-// exports.Weather.prototype.getWeather = function(city, displayFunction) {
-//   $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response) {
-//     displayFunction(city, response.main.humidity);
-//   }).fail(function(error) {
-//     $('.showWeather').text(error.responseJSON.message);
-//   });
-// }
-
 exports.User.prototype.getRepos = function(inputed_user, displayFunction){
 	var name_array = [];
 	var description_array = [];
@@ -26,8 +18,6 @@ exports.User.prototype.getRepos = function(inputed_user, displayFunction){
     	name_array.push(temp.name);
     	description_array.push(temp.description);
     }
-    checker = response.length;
-    page_counter++;
     console.log(response);
     displayFunction(name_array, description_array);
   
@@ -35,11 +25,3 @@ exports.User.prototype.getRepos = function(inputed_user, displayFunction){
     console.log(error.responseJSON.message);
   });
 };
-
-
-  // $.get('https://api.github.com/users/'+inputed_user+'?access_token=' + apiKey).then(function(response){
-  //   console.log(response);
-  //   var obj = JSON.stringify(response);
-  //   console.log(obj);
-  // });
-
