@@ -8,39 +8,23 @@ var displayRepo = function(repos) {
 		repo = repos[i];
 		if(typeof repo.description === 'string'){
 			if(repo.description.length>1){
-  			$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.created+"</td><td>"+repo.description+"</td></tr>");				
+  			$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+moment(repo.created).format('LLLL')+"</td><td>"+repo.description+"</td></tr>");				
 			}
 			else{
-				$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.created+"</td><td></td></tr>");
+				$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+moment(repo.created).format('LLLL')+"</td><td></td></tr>");
 			}
 		}
 		else{
-			$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.created+"</td><td></td></tr>");
+			$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+moment(repo.created).format('LLLL')+"</td><td></td></tr>");
 		}
 	}
 };
-
-// var displayRepo = function(repo) {
-// 	var temp = repo.description;
-// 		// $("#list").empty();
-// 		if(typeof temp === 'string'){
-// 			if(temp.length>1){
-//   			$("#list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.description+"</td></tr>");				
-// 			}
-// 			else{
-// 				$("#list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td></td></tr>");
-// 			}
-// 		}
-// 		else{
-// 			$("#list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td></td></tr>");
-// 		}
-// 	};
 
 $(document).ready(function() {
 	var currentUser = new User();
 	$('#search').click(function() {
 		var inputed_user = $('#inputed_user').val();
 		currentUser.getRepos(inputed_user, displayRepo);
-		return 0;
+		$('#table').show();
   });
 });
