@@ -25,10 +25,22 @@ var GitHubUser = require('./../js/github_user_class.js').GitHubUser;
 
 // }
 var displayRepo = function(name, description) {
+	var temp;
 	for( var i = 0; i < name.length; i++){
-  	$("ol").append("<li>"+name[i]+ " description:"+description[i]+"</li>");
+		temp = description[i];
+		if(typeof temp === 'string'){
+			if(temp.length>1){
+  			$("#list").append("<tr><td>"+name[i]+"</td><td>"+temp+"</td></tr>");				
+			}
+			else{
+				$("#list").append("<tr><td>"+name[i]+"</td><td></td></tr>");
+			}
+		}
+		else{
+			$("#list").append("<tr><td>"+name[i]+"</td><td></td></tr>");
+		}
 	}
-}
+};
 // $(document).ready(function() {
 //   var currentWeatherObject = new Weather();
 //   $('#weatherLocation').click(function() {

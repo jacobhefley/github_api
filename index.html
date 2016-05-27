@@ -6,53 +6,27 @@
     <title>Github Creep</title>
   </head>
   <body>
-<!--   <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <p class="navbar-brand" href="#">GitHub Api Project</p> -->
-<!--       <form class="navbar-form navbar-right">
-        <input id ="input_user" type="text" class="form-control" placeholder="GitHub User...">
-        <button class="btn" id="search">Search</button>      
-      </form> -->
-<!--     </nav>
-    </div>
-    <div class="container"> -->
-
-<!--       <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
- 
-        </div>
-      </div>
-    </nav>    -->   
-<!--       <form class="input-group">
-        <input id ="inputed_user" type="text" class="form-control" placeholder="GitHub User...">
-        <button class="btn" id="search">Search</button> 
-      </form>
-
-    </div> -->
     <div class="container">
-      <h1>GitHub Api Project</h1>
-        <input id ="inputed_user" type="text" class="form-control" placeholder="GitHub User...">
-        <button class="btn" id="search">Search</button> 
-      <div id = "list">
-        <ol>
-        </ol>
+      <div class="jumbotron">
+        <h1>GitHub Api Project</h1>
+        <div class="form-inline form-group">
+          <input id ="inputed_user" type="text" class="form-control" placeholder="GitHub User...">
+          <button class="btn" id="search">Search</button>
+        </div>
+      </div>
+      <div class="table responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Repository Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody id=list>
+
+          </tbody> 
+        </table>  
       </div>
     </div>
-
   </body>
 </html>
