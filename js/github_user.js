@@ -14,7 +14,15 @@ exports.User = function(){
 exports.User.prototype.getRepos = function(inputed_user){
   $.get('https://api.github.com/users/'+inputed_user+'?access_token=' + apiKey).then(function(response){
     console.log(response);
-  }).fail(function(error){
+    var obj = JSON.stringify(response);
+    console.log(obj);
+  });
+  $.get('https://api.github.com/users/'+inputed_user+'/repos?access_token=' + apiKey).then(function(response){
+    console.log(response);
+    var obj = JSON.stringify(response);
+    console.log(obj);
+  })
+  .fail(function(error){
     console.log(error.responseJSON.message);
   });
 };
