@@ -26,14 +26,3 @@ exports.User.prototype.getRepos = function(inputed_user, displayFunction){
     console.log(error.responseJSON.message);
   });
 };
-
-// // html_url
-//     console.log(response);
-//     for(i = 0; i < response.length; i++){
-//       temp = response[i];
-//       var tempRepo = new Repo(temp.name, temp.description, temp.html_url, temp.created_at);
-//       // tempRepo.log();
-//       displayFunction(tempRepo);
-//       // delete to do manual garbage collection, save memory !
-//       delete tempRepo;      
-//     }

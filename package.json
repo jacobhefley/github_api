@@ -4,7 +4,8 @@
   "description": "",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "moment": "^2.13.0"
   },
   "devDependencies": {
     "bower-files": "^3.13.1",

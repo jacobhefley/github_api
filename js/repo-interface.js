@@ -1,20 +1,21 @@
 var User = require('./../js/github_user.js').User;
 
 var displayRepo = function(repos) {
-	$("#list").empty();
+	$("#repos_list").empty();
+
 	var repo;
 	for( var i = 0; i < repos.length; i++){
 		repo = repos[i];
 		if(typeof repo.description === 'string'){
 			if(repo.description.length>1){
-  			$("#list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.description+"</td></tr>");				
+  			$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.created+"</td><td>"+repo.description+"</td></tr>");				
 			}
 			else{
-				$("#list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td></td></tr>");
+				$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.created+"</td><td></td></tr>");
 			}
 		}
 		else{
-			$("#list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td></td></tr>");
+			$("#repos_list").append("<tr><td><a href="+repo.url+">"+repo.name+"</a></td><td>"+repo.created+"</td><td></td></tr>");
 		}
 	}
 };
