@@ -2,16 +2,16 @@ var User = require('./../js/github_user.js').User;
 
 var GitHubUser = require('./../js/github_user_class.js').GitHubUser;
 
- function display(repos){
-    for( var i = 0; i < repos.length; i++){
-    	var para = document.createElement("p");
-			var node = document.createTextNode(repos[i]);
-			para.appendChild(node);
+//  function display(repos){
+//     for( var i = 0; i < repos.length; i++){
+//     	var para = document.createElement("p");
+// 			var node = document.createTextNode(repos[i]);
+// 			para.appendChild(node);
 
-			var element = document.getElementById("div1");
-			element.appendChild(para);
-    }
-}
+// 			var element = document.getElementById("div1");
+// 			element.appendChild(para);
+//     }
+// }
 // var mytext=document.createTextNode(what)
 // document.getElementById("mydiv").appendChild(mytext)
 
@@ -24,8 +24,10 @@ var GitHubUser = require('./../js/github_user_class.js').GitHubUser;
 // }
 
 // }
-var display = function(repo) {
-  $("ol").append("<li>"+repo+"</li>");
+var displayRepo = function(name, description) {
+	for( var i = 0; i < name.length; i++){
+  	$("ol").append("<li>"+name[i]+ " description:"+description[i]+"</li>");
+	}
 }
 // $(document).ready(function() {
 //   var currentWeatherObject = new Weather();
@@ -41,6 +43,6 @@ $(document).ready(function() {
 	var currentUser = new User();
 	$('#search').click(function() {
 		var inputed_user = $('#inputed_user').val();
-		currentUser.getRepos(inputed_user, display);
+		currentUser.getRepos(inputed_user, displayRepo);
   });
 });

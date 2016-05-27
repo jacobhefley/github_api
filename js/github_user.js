@@ -12,19 +12,26 @@ exports.User = function(){
 // }
 
 exports.User.prototype.getRepos = function(inputed_user, displayFunction){
-	var temp_array = [];
-  $.get('https://api.github.com/users/'+inputed_user+'/repos?access_token=' + apiKey).then(function(response){
-    for( var i = 0; i < 30; i++){
+	var name_array = [];
+	var description_array = [];
+	var temp = 1;
+	var i = 0;
+	var page_counter = 100;
+  $.get('https://api.github.com/users/'+inputed_user+'/repos?access_token=' + apiKey+'&per_page='+page_counter).then(function(response){
+    
+    for(i = 0; i < response.length; i++){
 
-    	var temp = response[i];
+    	temp = response[i];
     	console.log(temp.name);
-    	var temp2 = temp.name;
-    	temp_array.push(temp2);
-    	displayFunction(temp2); 
+    	name_array.push(temp.name);
+    	description_array.push(temp.description);
     }
+    checker = response.length;
+    page_counter++;
     console.log(response);
-  })
-  .fail(function(error){
+    displayFunction(name_array, description_array);
+  
+  }).fail(function(error){
     console.log(error.responseJSON.message);
   });
 };
@@ -35,3 +42,4 @@ exports.User.prototype.getRepos = function(inputed_user, displayFunction){
   //   var obj = JSON.stringify(response);
   //   console.log(obj);
   // });
+
